@@ -1,0 +1,1 @@
+1. kubectl apply -f <filename>.yml -->to create k8s object using manifest file
