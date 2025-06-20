@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-deployment
+  labels:
+    app: sample-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample-app
+  template:
+    metadata:
+      name: sample-deployment
+      labels:
+        app: sample-app
+    spec:
+      containers:
+      - name: sample-container
+        image: sample-image
+
+#Difference between deployment and replicaset is rs does not support rolling updates.
+#when the image is updated it creates new pods with new images but leaves the old container behind.
+#There is also a chance for downtime here.
+#Meanwhile deployment creates container with new image while simulatneously terminating old one's ensuring no downtime.
