@@ -17,3 +17,5 @@ Kind:
 1. kind get clusters
 
 2. kind create cluster --config <yamlfile> --name <clustername>
+
+3. kind delete cluster --name <clustername>
