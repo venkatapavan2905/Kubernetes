@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: sample-container
-        image: sample-image
+        image: nginx:latest
 
 #Difference between deployment and replicaset is rs does not support rolling updates.
 #when the image is updated it creates new pods with new images but leaves the old container behind.

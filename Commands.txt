@@ -1,1 +1,19 @@
 1. kubectl apply -f <filename>.yml -->to create k8s object using manifest file
+
+2. kubectl get pods
+
+3. kubectl config get-contexts  --> to list clusters
+
+4. kubectl config view --> to list detailed cluster information
+
+5. kubectl get pods -w  --> to watch pod creation interactively
+
+6. kubectl delete pod/<podname>
+
+7. kubectl get deployments -o wide -->to get more details use -o wide
+
+Kind:
+
+1. kind get clusters
+
+2. kind create cluster --config <yamlfile> --name <clustername>
