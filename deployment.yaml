@@ -17,7 +17,10 @@ spec:
     spec:
       containers:
       - name: sample-container
-        image: nginx:latest
+        image: venkatapavan29/php:helloworld
+        ports:
+        - containerPort: 8000
+          protocol: TCP
 
 #Difference between deployment and replicaset is rs does not support rolling updates.
 #when the image is updated it creates new pods with new images but leaves the old container behind.
