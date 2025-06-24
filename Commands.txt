@@ -12,6 +12,14 @@
 
 7. kubectl get deployments -o wide -->to get more details use -o wide
 
+8. kubectl taint node <nodename> <key>=<value>:NoSchedule/NoExecute/PreferNoSchedule --> to taint a node
+
+9. kubectl taint node <nodename> <key>=<value>:NoSchedule/NoExecute/PreferNoSchedule- --> put - at the end effect to untaint
+
+10. Static pods are control plane pods that are managed by kubelet not kube scheduler. the manifest files are present on /etc/kubernetes/manifests
+
+11. kubectl label node cka-cluster-worker <key>=<value> --> can be used with nodeSelector in pod to schedule.
+
 Kind:
 
 1. kind get clusters
