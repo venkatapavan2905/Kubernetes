@@ -10,5 +10,18 @@ spec:
     image: nginx:latest
     ports:
     - containerPort: 80
-      protocol: TCP
-    
+      protocol: TCP   
+  tolerations:
+  - key: "env"
+    operator: "Equal"
+    value: "demo"
+    effect: "NoSchedule"
+
+#Taints are applied on node.
+#Tolerations are applied on pods.
+#kubectl taint node <nodename> <key>=<value>:NoSchedule/NoExecute/PreferNoSchedule --> to taint a node
+#kubectl taint node <nodename> <key>=<value>:NoSchedule/NoExecute/PreferNoSchedule- --> put - at the end effect to untaint
+
+#NoSchedule --> on new pods
+#NoExecute --> on new and existinf pods on node
+#PreferNoSchedule --> same as NoSchedule but no guarantee
