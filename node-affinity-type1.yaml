@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: affinity-pod
+  labels:
+    env: demo
+spec:
+  containers:
+  - name: container
+    image: nginx:latest
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: env
+            operator: In
+            values:
+            - demo
+
+# Operators include In, NotIn, Exists, DoesNotExist, Gt and Lt.
+# NotIn and DoesNotExist allow you to define node anti-affinity behavior.
+# two types of nodeAffinity - 
+# 1. requireDuringSchedulingIngnoredDuringExecution
+# 2. preferredDuringSchedulingIgnoredDuringExecution
+# IgnoredDuringExecution implies that pods that are already scheduled in the node will not be evicted if there is any change in the label to the node.
