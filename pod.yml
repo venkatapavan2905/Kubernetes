@@ -25,3 +25,5 @@ spec:
 #NoSchedule --> on new pods
 #NoExecute --> on new and existinf pods on node
 #PreferNoSchedule --> same as NoSchedule but no guarantee
+
+#Operator value can be Equal or Exists. if using Exists no need of specifying value.
