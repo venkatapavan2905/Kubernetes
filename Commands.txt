@@ -20,6 +20,8 @@
 
 11. kubectl label node cka-cluster-worker <key>=<value> --> can be used with nodeSelector in pod to schedule.
 
+12. kubectl label node cka-cluster-worker <key>- ---> to unlabel a node
+
 Kind:
 
 1. kind get clusters
