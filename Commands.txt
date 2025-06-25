@@ -22,6 +22,8 @@
 
 12. kubectl label node cka-cluster-worker <key>- ---> to unlabel a node
 
+13. kubectl autoscale deployment <deployment-name> --cpu-percent=50 --min=3 --max=5
+
 Kind:
 
 1. kind get clusters
