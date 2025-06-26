@@ -24,6 +24,8 @@
 
 13. kubectl autoscale deployment <deployment-name> --cpu-percent=50 --min=3 --max=5
 
+14. kubectl top nodes --> command to check resource percentage of nodes.
+
 Kind:
 
 1. kind get clusters
