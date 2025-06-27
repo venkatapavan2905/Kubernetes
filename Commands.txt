@@ -26,6 +26,8 @@
 
 14. kubectl top nodes --> command to check resource percentage of nodes.
 
+15. kubectl config use-context <cluster_name> --> to set default cluster
+
 Kind:
 
 1. kind get clusters
