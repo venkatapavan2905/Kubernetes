@@ -1,0 +1,71 @@
+# exec command method
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-pod
+spec:
+  containers:
+  - name: liveness-container
+    images: registry.k8s.io/busybox:1.27.2
+    args:
+    - /bin/sh
+    - -c
+    - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /tmp/healthy
+      initialDelaySeconds: 5
+      periodSeconds: 5
+
+#http method
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-pod
+spec:
+  containers:
+  - name: liveness-container
+    images: registry.k8s.io/e2e-test-images/agnhost:2.40
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: 8080
+      initialDelaySeconds: 5
+      periodSeconds: 5
+
+#TCP method
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: goproxy
+  labels:
+    app: goproxy
+spec:
+  containers:
+  - name: goproxy
+    image: registry.k8s.io/goproxy:0.1
+    ports:
+    - containerPort: 8080
+    readinessProbe:
+      tcpSocket:
+        port: 8080
+      initialDelaySeconds: 15
+      periodSeconds: 10
+
+# There are three kinds of probes:
+# 1. StartUp probe --> this probe takes precedence. if this probe is successful then only remaining probes does their work.
+# 2. Liveness probe --> Restarts the pod is it is failing 
+# 3. Readniess probe --> to check if the probe is ready is receive traffic
+
+# Three ways to check probe
+# 1. by exec command
+# 2. by http
+# 3. by tcp
+
+#failureThreshold is an attribute/field which decides how many times does it have to restart the pod before declaring it as failed.
+
+
